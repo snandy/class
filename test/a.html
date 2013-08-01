@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>Define a single class</title>
+	<script src="../class.js"></script>
+</head> 
+<body>
+<script type="text/javascript">
+Class('Person', function() {
+	this.init = function(name) {
+		this.name = name
+	}
+	this.getName = function() {
+		return this.name
+	}
+	this.setName = function(name) {
+		this.name = name
+	}
+	this.println = function() {
+		alert('Name is ' + this.name)
+	}
+})
+var p = new Person('John Backus')
+console.log('Define a single class: ' + Person)
+console.log('Create a instance of Person, his name is ' + p.getName())
+</script>
+</body>
+</html>
+

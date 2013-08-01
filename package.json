@@ -1,0 +1,17 @@
+{
+	"name": "Class",
+	"version": "0.1.0",
+	"author": "@snandy",
+	"homepage": "http://snandy.cnblogs.com",
+	"descrition": "Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/snandy/class"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.0",
+		"grunt-contrib-jshint": "~0.1.1",
+		"grunt-contrib-uglify": "~0.1.2",
+		"grunt-contrib-concat": "~0.1.1"
+	}
+}
