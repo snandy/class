@@ -1,7 +1,7 @@
 Class API
 =====
 
-+ Define a single class
++ Define a single class 'Person'
     <pre>
     Class('Person', function() {
         this.init = function(name) {
@@ -20,4 +20,30 @@ Class API
     var p = new Person('John Backus')
     console.log('Define a single class: ' + Person)
     console.log('Create a instance of Person, his name is ' + p.getName())
+    </pre>
+
++ Define a class 'Man' which inherit Person
+    <pre>
+    Class('Man', Person, function(supr) {
+        this.init = function(name, age) {
+            supr.init.call(this, name)
+            this.age = age
+        }
+        this.getAge = function() {
+            return this.age
+        }
+        this.setAge = function(age) {
+            this.age = age
+        }
+        this.println = function() {
+            alert('Name is ' + this.name + ', age is ' + this.age)
+        }
+    })
+    var m1 = new Man('John McCarthy', 100)
+    m1.println()
+    </pre>
+
++ Define a namespace class 'model.Man'
+    <pre>
+
     </pre>

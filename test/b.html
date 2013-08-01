@@ -7,24 +7,38 @@
 </head> 
 <body>
 <script type="text/javascript">
-	Class('Person', function() {
-		this.init = function(name) {
-			this.name = name
-		}
-		this.getName = function() {
-			return this.name
-		}
-		this.setName = function(name) {
-			this.name = name
-		}
-		this.println = function() {
-			alert('Name is ' + this.name)
-		}
-	})
-	var p = new Person('John Backus')
+Class('Person', function() {
+	this.init = function(name) {
+		this.name = name
+	}
+	this.getName = function() {
+		return this.name
+	}
+	this.setName = function(name) {
+		this.name = name
+	}
+	this.println = function() {
+		alert('Name is ' + this.name)
+	}
+})
 
-	console.log('Define a single class: ' + Person)
-	console.log('Create a instance of Person, his name is ' + p.getName())
+Class('Man', Person, function(supr) {
+	this.init = function(name, age) {
+		supr.init.call(this, name) // call parent constructor 
+		this.age = age
+	}
+	this.getAge = function() {
+		return this.age
+	}
+	this.setAge = function(age) {
+		this.age = age
+	}
+	this.println = function() {
+		alert('Name is ' + this.name + ', age is ' + this.age)
+	}
+})
+var m1 = new Man('John McCarthy', 100)
+m1.println()
 </script>
 </body>
 </html>
