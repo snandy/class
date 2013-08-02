@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 			},
 			clazz: {
 				// intro在首部，outro在尾部
-				src: ['src/intro.js', 'src/*.js', '!src/outro.js', 'src/outro.js'],
+				src: ['src/intro.js', 'src/event.js', 'src/class.js', 'src/outro.js'],
 				dest: 'class.src.js'
 			}
 		},

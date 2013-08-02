@@ -26,23 +26,30 @@ function namespace(classPath, globalNamespace) {
 }
 
 // define a class
-function Class(classPath, superClass, classImp) {
-    if (!classImp) {
-        classImp = superClass
+function Class(name, superClass, factory) {
+    if (!factory) {
+        if (!superClass) {
+            throw new Error('class create failed, verify definitions')
+        }
+        factory = superClass
         superClass = Object
     }
+
     function Constructor() {
         if ( U.isFunction(this.init) ) {
             this.init.apply(this, arguments)
         }
     }
+    Constructor.toString = function() {return name}
+
     var proto = Constructor.prototype = new superClass()
-    Constructor.prototype.constructor = classImp
-    Constructor.toString = function() {return classPath}
+    proto.constructor = factory
     var supr = superClass.prototype
-    classImp.call(proto, supr)
+    factory.call(proto, supr)
     
-    var obj = namespace(classPath, Class.globalNamespace)
+    mix(proto, Event)
+
+    var obj = namespace(name, Class.globalNamespace)
     obj.namespace[obj.className] = Constructor
 }
 

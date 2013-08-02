@@ -2,6 +2,7 @@
     
 var U = {}
 var toString = Object.prototype.toString
+var slice = Array.prototype.slice
 
 // Iterator
 function forEach(obj, iterator, context) {
@@ -22,3 +23,15 @@ forEach(['Array', 'Boolean', 'Function', 'Object', 'String', 'Number'], function
         return toString.call(obj) === '[object ' + name + ']'
     }
 })
+
+function mix(obj) {
+    forEach(slice.call(arguments, 1), function(source) {
+        if (source) {
+            for (var prop in source) {
+                obj[prop] = source[prop]
+            }
+        }
+    })
+    return obj
+}
+
