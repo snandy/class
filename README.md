@@ -1,4 +1,4 @@
-Class API
+API
 =====
 
 #### Define a single class 'Person'
@@ -44,6 +44,46 @@ m1.println()
 </pre>
 
 #### Define a namespace class 'App.model.Man'
+<pre>
+Class('App.model.Person', function() {
+    this.init = function(name) {
+        this.name = name
+    }
+    this.getName = function() {
+        return this.name
+    }
+    this.setName = function(name) {
+        this.name = name
+    }
+    this.println = function() {
+        alert('Name is ' + this.name)
+    }
+})
+var p = new App.model.Person('John Backus')
+console.log('Create a instance of "App.model.Person", his name is ' + p.getName())
+</pre>
+
+#### Define a class with private
+<pre>
+Class('App.model.Person', function() {
+    this.init = function(name) {
+        this.name = name
+    }
+    this.getName = function() {
+        return this.name
+    }
+    this.setName = function(name) {
+        this.name = name
+    }
+    this.println = function() {
+        alert('Name is ' + this.name)
+    }
+})
+var p = new App.model.Person('John Backus')
+console.log('Create a instance of "App.model.Person", his name is ' + p.getName())
+</pre>
+
+#### Define a 
 <pre>
 Class('App.model.Person', function() {
     this.init = function(name) {

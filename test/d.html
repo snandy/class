@@ -2,29 +2,22 @@
 <html> 
 <head> 
 	<meta charset="utf-8"> 
-	<title>Define a single class</title>
+	<title>Define a class with private</title>
 	<script src="../class.js"></script>
 </head> 
 <body>
 <script type="text/javascript">
 	Class('Person', function() {
-		this.init = function(name) {
-			this.name = name
-		}
-		this.getName = function() {
-			return this.name
-		}
-		this.setName = function(name) {
-			this.name = name
+		var privateVar = 'private vars'
+		function privateFunc() {
+			console.log(privateVar)
 		}
 		this.println = function() {
-			alert('Name is ' + this.name)
+			privateFunc()
 		}
 	})
-	var p = new Person('John Backus')
-
-	console.log('Define a single class: ' + Person)
-	console.log('Create a instance of Person, his name is ' + p.getName())
+	var p = new Person()
+	p.println()
 </script>
 </body>
 </html>
