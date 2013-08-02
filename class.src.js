@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-01 13:40:13
+ * @snandy 2013-08-02 23:46:54
  *
  */
 ~function(global, undefined) {
@@ -13,11 +13,11 @@ var toString = Object.prototype.toString
 function forEach(obj, iterator, context) {
     if ( obj.length === +obj.length ) {
         for (var i=0; i<obj.length; i++) {
-            if (iterator.call(context, obj[i], i, obj) === true) return
+            iterator(obj[i], i, obj)
         }
     } else {
         for (var k in obj) {
-            if (iterator.call(context, obj[k], k, obj) === true) return
+            iterator(obj[k], k, obj)
         }
     }
 }

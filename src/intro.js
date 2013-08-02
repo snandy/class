@@ -7,11 +7,11 @@ var toString = Object.prototype.toString
 function forEach(obj, iterator, context) {
     if ( obj.length === +obj.length ) {
         for (var i=0; i<obj.length; i++) {
-            if (iterator.call(context, obj[i], i, obj) === true) return
+            iterator(obj[i], i, obj)
         }
     } else {
         for (var k in obj) {
-            if (iterator.call(context, obj[k], k, obj) === true) return
+            iterator(obj[k], k, obj)
         }
     }
 }
