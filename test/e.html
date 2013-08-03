@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>Specify the global naming</title>
+	<script src="../class.src.js"></script>
+</head> 
+<body>
+<script type="text/javascript">
+	// The global naming
+	var Sohu = {}
+	Class.globalNamespace = Sohu
+
+	// define 'Sohu.Person'
+	Class('Person', function() {
+		var privateVar = 'private vars'
+		function privateFunc() {
+			console.log(privateVar)
+		}
+		this.println = function() {
+			privateFunc()
+		}
+	})
+	var p = new Sohu.Person()
+	p.println()
+</script>
+</body>
+</html>
+

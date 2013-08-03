@@ -78,22 +78,22 @@ var p = new Person()
 p.println()
 </pre>
 
-#### Define a 
+#### Specify the global naming
 <pre>
-Class('App.model.Person', function() {
-    this.init = function(name) {
-        this.name = name
-    }
-    this.getName = function() {
-        return this.name
-    }
-    this.setName = function(name) {
-        this.name = name
+// The global naming
+var Sohu = {}
+Class.globalNamespace = Sohu
+
+// define 'Sohu.Person'
+Class('Person', function() {
+    var privateVar = 'private vars'
+    function privateFunc() {
+        console.log(privateVar)
     }
     this.println = function() {
-        alert('Name is ' + this.name)
+        privateFunc()
     }
 })
-var p = new App.model.Person('John Backus')
-console.log('Create a instance of "App.model.Person", his name is ' + p.getName())
+var p = new Sohu.Person()
+p.println()
 </pre>
