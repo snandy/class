@@ -49,8 +49,9 @@ function Class(name, superClass, factory) {
     
     mix(proto, Event)
 
+    if (Class.amd) return Constructor
     var obj = namespace(name, Class.globalNamespace)
-    return obj.namespace[obj.className] = Constructor
+    obj.namespace[obj.className] = Constructor
 }
 
 Class.statics = function(clazz, obj) {
@@ -72,4 +73,6 @@ Class.methods = function(clazz, obj, override) {
 }
 
 // defaults
-// Class.globalNamespace = global
+// Class.globalNamespace = global /* or window */
+// Class.amd = false
+

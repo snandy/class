@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-04 10:56:47
+ * @snandy 2013-08-04 12:15:21
  *
  */
 ~function(global, undefined) {
@@ -47,7 +47,6 @@ function Observer(type, context) {
     this.scope = context || global
     this.listeners = []
 }
-
 Observer.prototype = {
     subscribe: function(fn, scope, options) {
         var listeners = this.listeners
@@ -227,8 +226,9 @@ function Class(name, superClass, factory) {
     
     mix(proto, Event)
 
+    if (Class.amd) return Constructor
     var obj = namespace(name, Class.globalNamespace)
-    return obj.namespace[obj.className] = Constructor
+    obj.namespace[obj.className] = Constructor
 }
 
 Class.statics = function(clazz, obj) {
@@ -250,10 +250,14 @@ Class.methods = function(clazz, obj, override) {
 }
 
 // defaults
-// Class.globalNamespace = global
+// Class.globalNamespace = global /* or window */
+// Class.amd = false
+
 
 // Expose IO to the global object or as AMD module
 if (typeof define === 'function' && define.amd) {
+    // define.amd.Class = true
+    Class.amd = true
     define('Class', [], function() { return Class } )
 } else {
     // global.namespace = namespace

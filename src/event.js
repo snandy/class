@@ -3,7 +3,6 @@ function Observer(type, context) {
     this.scope = context || global
     this.listeners = []
 }
-
 Observer.prototype = {
     subscribe: function(fn, scope, options) {
         var listeners = this.listeners
