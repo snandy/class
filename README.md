@@ -1,5 +1,5 @@
 How to use
-=====
+====
 
 <pre>
 // if you run in browser
@@ -20,7 +20,7 @@ define(['Class'], function(Class) {
 </pre>
 
 API
-=====
+====
 
 #### Define a single class 'Person'
 <pre>
