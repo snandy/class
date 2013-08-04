@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-03 07:51:54
+ * @snandy 2013-08-04 10:19:29
  *
  */
 ~function(global, undefined) {
@@ -101,21 +101,12 @@ Observer.prototype = {
 
         return true
     },
-    /**
-     * Removes all listeners
-     * @method unsubscribeAll
-     * @return {int} The number of listeners unsubscribed
-     */
     clear: function() {
         var l = this.listeners.length, i = l
         while (i--) this._delete(i)
         this.listeners = []
         return l
     },
-    /**
-     * Returns the matchs listener index by the specified fn and scope.
-     * Used by the unsubscribe method to match the right subscriber.
-     */
     _find: function(fn, scope) {
         var listeners = this.listeners
         var i = listeners.length
@@ -128,10 +119,6 @@ Observer.prototype = {
         }
         return -1
     },
-    /**
-     * @method _delete
-     * @private
-     */
     _delete: function(index) {
         var listeners = this.listeners
         var o = listeners[index]
@@ -145,14 +132,6 @@ Observer.prototype = {
 }
 
 var Event = {
-    /**
-     * Appends an event handler to this object.
-     * @param {String}   type The type, or name of the event to listen for. May also be an object who's property names are event names.
-     * @param {Function} handler The method the event invokes.
-     * @param {Object}   scope (optional) The scope (<code><b>this</b></code> reference) in which the handler function is executed.
-     * <b>If omitted, defaults to the object which fired the event.</b>
-     * @param {Object}   options (optional) An object containing handler configuration. This options to be passed back as last parameter to fn when the event fires.
-     */
     on: function(type, fn, scope, o) {
         var config, ev
         if (typeof type === 'object') {
@@ -171,12 +150,6 @@ var Event = {
             ev.subscribe(fn, scope, o)
         }
     },
-    /**
-     * Removes an event handler.
-     * @param {String}   type The type of event the handler was associated with.
-     * @param {Function} fn The handler to remove. 
-     * @param {Object}   scope (optional) The scope originally specified for the handler.
-     */
     off: function(type, fn, scope) {
         var config, ev, o, index
         if (typeof type === 'object') {
@@ -195,26 +168,12 @@ var Event = {
         var ev = this._events && this._events[type]
         if (ev) ev.clear()
     },
-    /**
-     * @param {String} type The type, or name of the event to fire.
-     * @param {Object...} args Variable number of parameters are passed to handlers.
-     * @return {Boolean} returns false if any of the handlers return false otherwise it returns true.
-     */
     fire: function(type) {
         var ev
         if (!this._events || !(ev = this._events[type])) {
             return true
         }
         return ev.publish.apply(ev, slice.call(arguments, 1))
-    },
-    /**
-     * Checks to see if this object has any listeners for a specified event
-     * @param {String} eventName The name of the event to check for
-     * @return {Boolean} True if the event is being listened for, else false
-     */
-    hasEvent: function(type) {
-        var e = this._events && this._events[type]
-        return typeof e === 'object' && e.listeners.length > 0
     }
 }
 
@@ -273,7 +232,7 @@ function Class(name, superClass, factory) {
 }
 
 Class.statics = function(clazz, obj) {
-    for (var a in obj) clazz[a] = obj[a]
+    mix(clazz, obj)
 }
 
 Class.methods = function(clazz, obj, override) {

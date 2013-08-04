@@ -54,7 +54,7 @@ function Class(name, superClass, factory) {
 }
 
 Class.statics = function(clazz, obj) {
-    for (var a in obj) clazz[a] = obj[a]
+    mix(clazz, obj)
 }
 
 Class.methods = function(clazz, obj, override) {

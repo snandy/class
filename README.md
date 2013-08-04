@@ -26,6 +26,7 @@ console.log('Create a instance of Person, his name is ' + p.getName())
 <pre>
 Class('Man', Person, function(supr) {
     this.init = function(name, age) {
+        // call super class constructor
         supr.init.call(this, name)
         this.age = age
     }
