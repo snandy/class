@@ -1,5 +1,4 @@
 ## How to use
-====
 
 <pre>
 // if you run node.js, or CommonJS-compliant system
@@ -17,7 +16,6 @@ define(['Class'], function(Class) {
 </pre>
 
 ## API
-====
 
 #### Define a single class 'Person'
 <pre>
