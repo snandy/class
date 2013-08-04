@@ -2,7 +2,7 @@
 
 <pre>
 // if you run node.js, or CommonJS-compliant system
-var dcl = require('Class')
+var Class = require('Class')
 
 // if you use Class in a browser with AMD (like RequireJS):
 require(['Class'], function(Class) {
