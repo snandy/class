@@ -1,3 +1,24 @@
+How to use
+=====
+
+<pre>
+// if you run in browser
+&lt;script src=&quot;class.js&quot;&gt;&lt;&#x2F;script&gt;
+
+// if you run node.js, or CommonJS-compliant system
+var dcl = require('Class')
+
+// if you use dcl in a browser with AMD (like RequireJS):
+require(['Class'], function(Class) {
+    // the same code that uses Class
+})
+
+// or when you define your own module:
+define(['Class'], function(Class) {
+    // your Class-using code goes here
+})
+</pre>
+
 API
 =====
 
