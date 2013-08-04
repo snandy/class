@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-04 10:19:29
+ * @snandy 2013-08-04 10:56:47
  *
  */
 ~function(global, undefined) {
@@ -228,7 +228,7 @@ function Class(name, superClass, factory) {
     mix(proto, Event)
 
     var obj = namespace(name, Class.globalNamespace)
-    obj.namespace[obj.className] = Constructor
+    return obj.namespace[obj.className] = Constructor
 }
 
 Class.statics = function(clazz, obj) {

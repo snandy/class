@@ -50,7 +50,7 @@ function Class(name, superClass, factory) {
     mix(proto, Event)
 
     var obj = namespace(name, Class.globalNamespace)
-    obj.namespace[obj.className] = Constructor
+    return obj.namespace[obj.className] = Constructor
 }
 
 Class.statics = function(clazz, obj) {

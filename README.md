@@ -98,3 +98,17 @@ Class('Person', function() {
 var p = new Sohu.Person()
 p.println()
 </pre>
+
+#### AMD Usage
+<pre>
+define('Person', ['Class'], function (Class) {
+    return Class('Person', function() {
+        this.init = function(name, age) {
+            this.name = name
+            this.age = age
+        }
+        this.getName = function() {}
+        this.setName = function(name) {}
+    })
+})
+</pre>
