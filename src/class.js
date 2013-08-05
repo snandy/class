@@ -25,6 +25,16 @@ function namespace(classPath, globalNamespace) {
     }
 }
 
+var create = Object.create ? 
+        function(o) { return Object.create(o) } : 
+        (function() { // Reusable constructor function for the Object.create() shim.
+            function F() {}
+            return function(o) {
+                F.prototype = o
+                return new F
+            }
+        }())
+
 // define a class
 function Class(name, superClass, factory) {
     if (!factory) {
@@ -40,11 +50,12 @@ function Class(name, superClass, factory) {
             this.init.apply(this, arguments)
         }
     }
-    Constructor.toString = function() {return name}
+    Constructor.toString = function() { return name }
 
-    var proto = Constructor.prototype = new superClass()
-    proto.constructor = factory
     var supr = superClass.prototype
+    // var proto = Constructor.prototype = new superClass
+    var proto = Constructor.prototype = create(supr)
+    proto.constructor = factory
     factory.call(proto, supr)
     
     mix(proto, Event)

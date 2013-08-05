@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-04 12:15:21
+ * @snandy 2013-08-06 07:13:14
  *
  */
 ~function(global, undefined) {
@@ -202,6 +202,16 @@ function namespace(classPath, globalNamespace) {
     }
 }
 
+var create = Object.create ? 
+        function(o) { return Object.create(o) } : 
+        (function() { // Reusable constructor function for the Object.create() shim.
+            function F() {}
+            return function(o) {
+                F.prototype = o
+                return new F
+            }
+        }())
+
 // define a class
 function Class(name, superClass, factory) {
     if (!factory) {
@@ -217,11 +227,12 @@ function Class(name, superClass, factory) {
             this.init.apply(this, arguments)
         }
     }
-    Constructor.toString = function() {return name}
+    Constructor.toString = function() { return name }
 
-    var proto = Constructor.prototype = new superClass()
-    proto.constructor = factory
     var supr = superClass.prototype
+    // var proto = Constructor.prototype = new superClass
+    var proto = Constructor.prototype = create(supr)
+    proto.constructor = factory
     factory.call(proto, supr)
     
     mix(proto, Event)
@@ -254,8 +265,9 @@ Class.methods = function(clazz, obj, override) {
 // Class.amd = false
 
 
-// Expose IO to the global object or as AMD module
-if (typeof define === 'function' && define.amd) {
+if (typeof exports === 'object') { // node.js
+	exports.Class = Class
+} else if (typeof define === 'function' && define.amd) { // Expose IO to the global object or as AMD module
     // define.amd.Class = true
     Class.amd = true
     define('Class', [], function() { return Class } )
