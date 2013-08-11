@@ -117,49 +117,49 @@ p.println()
 
 #### Add statics for a class
 <pre>
-    Class.statics(Person, {
-        prop1: 'xx',
-        prop2: 'yy',
-        method1: function() {xx},
-        method2: function() {yy}
-    })
-    Class.prop1 // -》xx
-    Class.method1() // call static method
+Class.statics(Person, {
+    prop1: 'xx',
+    prop2: 'yy',
+    method1: function() {xx},
+    method2: function() {yy}
+})
+Class.prop1 // -》xx
+Class.method1() // call static method
 </pre>
 
 #### Add methods for a class's prototype
 <pre>
-    Class.methods(Person, {
-        method1: function() {xx},
-        method2: function() {yy}
-    })
-    var p1 = new Person('John', 29)
-    p1.method1()
-    p1.method2() 
+Class.methods(Person, {
+    method1: function() {xx},
+    method2: function() {yy}
+})
+var p1 = new Person('John', 29)
+p1.method1()
+p1.method2() 
 </pre>
 
 #### Mixin Classes
 <pre>
-    var obj1 = {
-        shout: function() {
-            alert('I am a' + this.name)
-        }
+var obj1 = {
+    shout: function() {
+        alert('I am a' + this.name)
     }
-    var obj2 = {
-        setName: function(name) {
-            this.name = name
-        },
-        setAge: function(age) {
-            this.age = age
-        }
+}
+var obj2 = {
+    setName: function(name) {
+        this.name = name
+    },
+    setAge: function(age) {
+        this.age = age
     }
-    Class('Person', function() {
-        this.init = function(name, age) {
-            this.name = name
-            this.age = age
-        }
-    })
-    Class.agument(Person, obj1, obj2)
+}
+Class('Person', function() {
+    this.init = function(name, age) {
+        this.name = name
+        this.age = age
+    }
+})
+Class.agument(Person, obj1, obj2)
 <pre>
 
 #### AMD Usage
