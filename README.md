@@ -160,7 +160,7 @@ Class('Person', function() {
     }
 })
 Class.agument(Person, obj1, obj2)
-<pre>
+</pre>
 
 #### AMD Usage
 <pre>
