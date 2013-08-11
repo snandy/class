@@ -1,7 +1,7 @@
 /*!
  * Class.js v0.1.0
  * Small, fast, elegant, powerful, and cross platform JavaScript OOP library. Support class, inheritance, namespace, private and more.
- * @snandy 2013-08-06 07:13:14
+ * @snandy 2013-08-11 15:31:15
  *
  */
 ~function(global, undefined) {
@@ -13,7 +13,7 @@ var slice = Array.prototype.slice
 // Iterator
 function forEach(obj, iterator, context) {
     if ( obj.length === +obj.length ) {
-        for (var i=0; i<obj.length; i++) {
+        for (var i = 0; i < obj.length; i++) {
             iterator(obj[i], i, obj)
         }
     } else {
@@ -258,6 +258,23 @@ Class.methods = function(clazz, obj, override) {
             }
         }
     }
+
+    return clazz
+}
+
+Class.agument = function(clazz) {
+    var override = false, protos = slice.call(arguments, 1)
+    if ( U.isBoolean(clazz) ) {
+        override = true
+        clazz = arguments[1]
+        protos = slice.call(arguments, 2)
+    }
+
+    forEach(protos, function(proto) {
+        Class.methods(clazz, proto, override)
+    })
+
+    return clazz
 }
 
 // defaults

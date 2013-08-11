@@ -81,6 +81,23 @@ Class.methods = function(clazz, obj, override) {
             }
         }
     }
+
+    return clazz
+}
+
+Class.agument = function(clazz) {
+    var override = false, protos = slice.call(arguments, 1)
+    if ( U.isBoolean(clazz) ) {
+        override = true
+        clazz = arguments[1]
+        protos = slice.call(arguments, 2)
+    }
+
+    forEach(protos, function(proto) {
+        Class.methods(clazz, proto, override)
+    })
+
+    return clazz
 }
 
 // defaults

@@ -7,7 +7,7 @@ var slice = Array.prototype.slice
 // Iterator
 function forEach(obj, iterator, context) {
     if ( obj.length === +obj.length ) {
-        for (var i=0; i<obj.length; i++) {
+        for (var i = 0; i < obj.length; i++) {
             iterator(obj[i], i, obj)
         }
     } else {
