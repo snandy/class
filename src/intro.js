@@ -8,11 +8,11 @@ var slice = Array.prototype.slice
 function forEach(obj, iterator, context) {
     if ( obj.length === +obj.length ) {
         for (var i = 0; i < obj.length; i++) {
-            iterator(obj[i], i, obj)
+            iterator(context||obj[i], i, obj)
         }
     } else {
         for (var k in obj) {
-            iterator(obj[k], k, obj)
+            iterator(context||obj[k], k, obj)
         }
     }
 }
