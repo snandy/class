@@ -123,8 +123,8 @@ Class.statics(Person, {
     method1: function() {xx},
     method2: function() {yy}
 })
-Class.prop1 // -》xx
-Class.method1() // call static method
+Person.prop1 // -》xx
+Person.method1() // call static method
 </pre>
 
 #### Add methods for a class's prototype
