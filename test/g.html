@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>Custom event</title>
+    <script src="../class.src.js"></script>
+</head> 
+<body>
+<script type="text/javascript">
+Class('Person', function() {
+    this.init = function(name) {
+        this.name = name
+    }
+    this.getName = function() {
+        return this.name
+    }
+    this.setName = function(name) {
+        this.name = name
+    }
+    this.println = function() {
+        alert('Name is ' + this.name)
+    }
+})
+var p = new Person('John Backus')
+p.on('change', function(ev) {
+    console.log(ev)
+})
+
+var num = 1;
+document.onclick = function() {
+    p.fire('change', 'clicked: ' + num++)
+}
+</script>
+</body>
+</html>
+

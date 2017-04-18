@@ -162,6 +162,33 @@ Class('Person', function() {
 Class.agument(Person, obj1, obj2)
 </pre>
 
+#### Custom event
+<pre>
+Class('Person', function() {
+    this.init = function(name) {
+        this.name = name
+    }
+    this.getName = function() {
+        return this.name
+    }
+    this.setName = function(name) {
+        this.name = name
+    }
+    this.println = function() {
+        alert('Name is ' + this.name)
+    }
+})
+var p = new Person('John Backus')
+p.on('change', function(ev) {
+    console.log(ev)
+})
+
+var num = 1;
+document.onclick = function() {
+    p.fire('change', 'clicked: ' + num++)
+}  
+</pre>
+
 #### AMD Usage
 <pre>
 define('Person', ['Class'], function (Class) {
